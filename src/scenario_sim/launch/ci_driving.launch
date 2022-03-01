@@ -6,26 +6,12 @@
   </include>
   
   <!-- Mission Planning -->
-  <arg name="enableStopSignBehavior" 		default="false" />	
-  <include file="$(find scenario_sim)/launch/mission_planning.launch">
-    <arg name="maxVelocity" 				default="6" /> 
-  	<arg name="enableSwerving" 				default="true"  />
-    <arg name="enableStopSignBehavior" 		default="$(arg enableStopSignBehavior)" />
-    <arg name="openDriveMap" 					value="$(arg opendriveFilePath)" />
+  <!-- "planner_launch is part of the ci testing frameworks version of open planner" -->
+  <include file="$(find planner_launch)/launch/mission_planning.launch">
   </include>
 
   <!-- Motion Planning -->
-  <include file="$(find scenario_sim)/launch/motion_planning.launch">
-    <arg name="steerAngleGainKP" 			default="3.0"/>
-    <arg name="steerAngleGainKI" 			default="0.0"/>
-
-    <arg name="accelGainKP" 				default="20"/>
-    <arg name="accelGainKI" 				default="2"/>
-    <arg name="accelGainKD" 				default="0.0"/>
-	
-    <arg name="brakeGainKP" 				default="10"/>
-    <arg name="brakeGainKI" 				default="2.0"/>
-    <arg name="brakeGainKD" 				default="0.0"/> 
+  <include file="$(find planner_launch)/launch/motion_planning.launch">
   </include>
 
   <!-- <node type="rviz" name="rviz" pkg="rviz" args="-d $(find scenario_sim)/config/op_viz.rviz" /> -->
